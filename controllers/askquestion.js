@@ -1,11 +1,14 @@
 const mongoose = require("mongoose");
 const questions = require("../models/question.js");
+const users = require("../models/auth.js");
 
 module.exports.askQuestionPost = async (req, res) => {
     const postQuestionData = req.body;
     const postQuestion = new questions(postQuestionData);
+    const user = await users.findById(postQuestion.userId);
     try {
         await postQuestion.save();
+        await users.findOneAndUpdate({_id:postQuestion.userId}, {$set: {noOfQuestions: user.noOfQuestions -1}},{new: true});
         res.status(200).json("Posted a new question successfully");
     } catch (e) {
         console.log(e);

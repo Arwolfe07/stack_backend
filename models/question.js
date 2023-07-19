@@ -9,7 +9,7 @@ const questionSchema = new mongoose.Schema({
     downVote: { type: [String], default: [] },
     userPosted: { type: String, required: "Question must have an author" },
     userId: { type: String },
-    paskedOn: { type: Date, default: Date.now },
+    askedOn: { type: Date, default: Date.now },
     answers: [{
         answerBody: String,
         userAnswered: String,

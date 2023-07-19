@@ -4,6 +4,8 @@ const cors = require("cors");
 const userRoutes = require("./routes/user.js");
 const askQuestionRoutes = require("./routes/askquestion.js");
 const answerRoutes = require("./routes/answer.js");
+const paymentRoutes = require("./routes/subs.js");
+const postRoutes = require("./routes/post.js");
 const app = express();
 const dotenv = require('dotenv');
 
@@ -19,6 +21,8 @@ app.get('/', (req, res) => {
 app.use('/user', userRoutes);
 app.use('/questions', askQuestionRoutes);
 app.use('/answer', answerRoutes);
+app.use('/payment', paymentRoutes);
+app.use('/community', postRoutes);
 
 const PORT = process.env.PORT || 5000;
 

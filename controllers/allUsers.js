@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
+const nodemailer = require("nodemailer");
 const users = require("../models/auth.js");
+const verify =require("../models/verify.js");
+
 
 module.exports.allUsers = async (req, res) => {
     try {
@@ -27,3 +30,4 @@ module.exports.updateProfile = async (req, res) => {
         res.status(405).json({ message: error.message })
     }
 }
+
